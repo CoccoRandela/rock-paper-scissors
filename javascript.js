@@ -8,7 +8,7 @@ function computerPlay () {
 }
 
 function playRound(playerSelection,computerSelection) {
-   if (computerSelection != playerSelection) {
+    if (computerSelection != playerSelection) {
        if (computerSelection == "rock") {
            if (playerSelection == "scissors") {
                return outcome = "computerWin";
@@ -43,6 +43,10 @@ function game () {
     let playerScore = 0;
     while (computerScore < 5 && playerScore < 5){
         const playerSelection = prompt("Choose your weapon!").toLowerCase();
+        if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+            console.log ("Please choose a playable weapon...");
+            continue;
+        }
         const computerSelection = computerPlay();
         outcome = 0
         playRound (playerSelection, computerSelection);
