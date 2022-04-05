@@ -11,30 +11,30 @@ function playRound(playerSelection,computerSelection) {
     if (computerSelection != playerSelection) {
        if (computerSelection == "rock") {
            if (playerSelection == "scissors") {
-               return outcome = 'lost';
+               return outcome = 'loss :(';
            }
            else {
-               return outcome = 'win';
+               return outcome = 'win :)';
            }  
        }
        if (computerSelection == "paper") {
            if (playerSelection == "scissors") {
-               return outcome = 'win';
+               return outcome = 'win :)';
            }
            else {
-               return outcome = 'lost';
+               return outcome = 'loss :(';
            }
        }
        if (computerSelection == "scissors") {
            if (playerSelection == "paper") {
-               return outcome = 'lost';
+               return outcome = 'loss :(';
            }
            else {
-               return outcome = 'win';
+               return outcome = 'win :)';
            }
        }
    } else {
-       return outcome = 'tie';
+       return outcome = 'tie...';
    }
 }
 
@@ -50,60 +50,42 @@ playerScore.textContent = playerCounter;
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
+        button.classList.toggle ('selected');
         playRound(button.id, computerPlay());
-        if (outcome == 'lost') {
+        if (outcome == 'loss :(') {
             roundResult.textContent = outcome;
             computerCounter++;
         } 
-        else if (outcome == 'win') {
+        else if (outcome == 'win :)') {
             roundResult.textContent = outcome;
             playerCounter++;
         } 
-        else {roundResult.textContent = 'tie'}
+        else {roundResult.textContent = 'tie...'}
         computerScore.textContent = computerCounter;
         playerScore.textContent = playerCounter;
         if (computerCounter == 5 || playerCounter == 5) {
-            const gameResult = document.createElement('div');
-            gameResult.classList.add('gameResult');
-            gameResult.textContent = (computerCounter == 5)? 'the computer wins! You suck': 'you win! Fuck computers';
-            body.appendChild(gameResult);
+            const modalContainer = document.createElement('div');
+            modalContainer.classList.add('modal-container');
+            body.appendChild(modalContainer);
+            const modal = document.createElement('div');
+            modal.classList.add('modal');
+            modalContainer.appendChild(modal);
+            const gameResult = document.createElement('p');
+            gameResult.textContent = (computerCounter == 5)? 'The computer wins! You suck...': 'You win! Screw computers!';
+            modal.appendChild(gameResult);
             const refreshButton = document.createElement('button');
-            const refreshText = document.createElement('a');
-            refreshText. textContent = 'play again?';
-            refreshText.setAttribute('href', 'index.html');
-            body.appendChild(refreshButton);         
-            refreshButton.appendChild(refreshText);   
+            refreshButton.classList.add('refresh-button');
+            refreshButton. textContent = 'play again?';
+            modal.appendChild(refreshButton);  
+            refreshButton.addEventListener('click', () => {
+                window.location.reload();
+            })        
         }
     })
 })
 
-
-
-/*function game () {
-    let computerScore = 0;
-    let playerScore = 0;
-    while (computerScore < 5 && playerScore < 5){
-        const playerSelection = prompt("Choose your weapon!").toLowerCase();
-        if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
-            console.log ("Please choose a playable weapon...");
-            continue;
-        }
-        const computerSelection = computerPlay();
-        outcome = 0
-        playRound (playerSelection, computerSelection);
-        if (outcome == "computerWin") {
-            console.log ("round lost");
-            computerScore ++;
-        } else if (outcome == "playerWin"){
-            console.log ("round won");
-            playerScore ++;
-        } else {console.log ("tie round")}
-    }
-   let gameResult = (computerScore > playerScore)? "You lost the game!" : 
-   (computerScore == playerScore)? "Tie game!": 
-   "You won the game!";
-    return gameResult; 
-}
-
-
-console.log (game())*/  
+buttons.forEach(button => {
+    button.addEventListener ('mousedown', () => {
+        button.classList.toggle ('selected');
+    })
+})

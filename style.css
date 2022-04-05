@@ -1,0 +1,109 @@
+html, body {
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(background.jpeg);
+    font-family: 'Courier New', Courier, monospace;
+    color: hsl(36, 89%, 61%);
+    -webkit-text-stroke: 1px teal;
+}
+
+
+h1 {
+    margin-top: 0px;
+    text-align: center;
+    font-size: 3em;
+    border-radius: 10px;
+}
+
+.choice-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.choice-container button {
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid blanchedalmond;
+    border-radius: 10px;
+    transition: all .02s ease-in-out;
+}
+
+.selected {
+    transform: scale(1.1);
+    border-color: blanchedalmond;
+    box-shadow: 0 0 1rem blanchedalmond;
+}
+
+img {
+    width: 170px;
+    height: 200px;
+}
+
+#result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100px;
+    font-size: 5em;
+    font-weight: bold;
+}
+
+#score {
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+}
+
+.score-container {
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 1em;
+}
+
+span {
+    text-align: center;
+}
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background-color: hsl(36, 89%, 61%);
+    padding: 50px 30px;
+    border: 2px solid teal;
+    text-align: center;
+} 
+
+.modal p {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.refresh-button {
+    padding: 15px 10px;
+    background-color: teal;
+    border-radius: 5px;
+    border: 0px;
+    color: hsl(36, 89%, 61%);
+    font-weight: bold;
+    font-size: 20px;
+
+}
